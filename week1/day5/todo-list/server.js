@@ -1,12 +1,18 @@
 import express from "express"
 import dotenv from "dotenv"
+import bodyParser from "body-parser";
 import todoRoute from "./routes/todoRoute.js";
 
 dotenv.config()
+
 const PORT = process.env.PORT || 3001;
+
 const app = express();
+
 app.set("view engine", "ejs");
 app.use(express.static("public"));
+app.use(bodyParser.json())
+app.use(express.urlencoded({extended: true}))
 
 app.use("/", todoRoute);
 

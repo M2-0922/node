@@ -4,11 +4,29 @@
 <body>
     <%- include("../partials/header") %>
     <main>
-        <% todos.forEach(todo => { %>
-            <li>
-                <%= todo.title %>
-            </li>
-        <% }) %>
+        <form id="todo-form" action="/todo" method="POST">
+            <input type="text" placeholder="write your todo" name="title">
+            <button>Add</button>
+        </form>
+        <div id="todo-list">
+            <% todos.forEach(todo => { %>
+                <li>
+                    <% if(todo.completed) {%>
+                        <strike><%= todo.title %></strike>
+                    <% } else { %>
+                        <span><%= todo.title %></span>
+                    <% } %>
+                    <div id="form-action">
+                        <form action="/todo/<%= todo.id %>" method="POST">
+                            <button type="submit">Delete</button>
+                        </form>
+                        <form action="/todo/<%= todo.id %>/update" method="POST">
+                            <button type="submit">Complete</button>
+                        </form>
+                    </div>
+                </li>
+            <% }) %>
+        </div>
     </main>
     <%- include("../partials/footer") %>
 </body>
