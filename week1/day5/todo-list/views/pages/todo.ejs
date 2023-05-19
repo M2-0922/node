@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include("../partials/head", { title: "Todo"}) %>
+<body>
+    <%- include("../partials/header") %>
+    <main>
+        <% todos.forEach(todo => { %>
+            <li>
+                <%= todo.title %>
+            </li>
+        <% }) %>
+    </main>
+    <%- include("../partials/footer") %>
+</body>
+</html>
