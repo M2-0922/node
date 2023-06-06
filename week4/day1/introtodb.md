@@ -135,6 +135,70 @@ First, you need to install MySQL on your computer. The installation process vari
 
 Make sure that you have Node.js installed on your machine. You can download it from the official Node.js website. You should also have npm (node package manager), which comes bundled with Node.js installation.
 
+To check all tables in a MySQL database using the MySQL Command-Line Interface (CLI), follow these steps:
+
+1. Open the Terminal application on your macOS.
+
+2. Start the MySQL CLI by typing the following command and pressing Enter:
+
+   ```
+   mysql -u your_username -p
+   ```
+
+   Replace `your_username` with your MySQL username. Enter your MySQL password when prompted.
+
+3. After entering the password, you should be inside the MySQL CLI.
+
+4. Switch to the desired database using the `USE` statement:
+
+   ```
+   USE your_database_name;
+   ```
+
+   Replace `your_database_name` with the name of the database you want to check the tables for.
+
+5. To view all tables in the current database, you can use the following command:
+
+   ```
+   SHOW TABLES;
+   ```
+
+   This command will list all the tables present in the selected database.
+
+If you want to check a specific table's structure or information, you can use the `DESCRIBE` or `SHOW CREATE TABLE` statements. Here's how:
+
+1. Make sure you're already inside the MySQL CLI and connected to the desired database.
+
+2. To view the structure of a specific table, use the `DESCRIBE` statement followed by the table name:
+
+   ```
+   DESCRIBE your_table_name;
+   ```
+
+   Replace `your_table_name` with the name of the table you want to check.
+
+   This command will display the column names, data types, and other details of the specified table.
+
+3. To view the complete create statement for a specific table, you can use the `SHOW CREATE TABLE` statement:
+
+   ```
+   SHOW CREATE TABLE your_table_name;
+   ```
+
+   Replace `your_table_name` with the name of the table you want to check.
+
+   This command will show the complete SQL statement used to create the specified table, including all the columns, indexes, and constraints.
+
+By using these commands, you can check all tables in a MySQL database or inspect specific tables in detail using the MySQL CLI on macOS.
+
+### ERRORS: 
+
+- `Error occurred on connection of db: Error: ER_NOT_SUPPORTED_AUTH_MODE: Client does not support authentication protocol requested by server; consider upgrading MySQL client`
+
+Solution,
+
+`ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'helloworld123'`
+
 **Step 3: Create a New Node.js Application**
 
 Create a new folder on your computer and initialize a new Node.js application there by running `npm init -y`. This will create a new `package.json` file in your directory.
@@ -332,6 +396,62 @@ PostgreSQL, also known as Postgres, is a powerful, open-source object-relational
 ### Step 1: Install PostgreSQL
 
 The first step is to install PostgreSQL on your machine. You can download it from the official PostgreSQL website, and you'll find detailed installation instructions for various operating systems there.
+
+To check all tables in a MySQL database using the MySQL Command-Line Interface (CLI), follow these steps:
+
+1. Open the Terminal application on your macOS.
+
+2. Start the MySQL CLI by typing the following command and pressing Enter:
+
+   ```
+   mysql -u your_username -p
+   ```
+
+   Replace `your_username` with your MySQL username. Enter your MySQL password when prompted.
+
+3. After entering the password, you should be inside the MySQL CLI.
+
+4. Switch to the desired database using the `USE` statement:
+
+   ```
+   USE your_database_name;
+   ```
+
+   Replace `your_database_name` with the name of the database you want to check the tables for.
+
+5. To view all tables in the current database, you can use the following command:
+
+   ```
+   SHOW TABLES;
+   ```
+
+   This command will list all the tables present in the selected database.
+
+If you want to check a specific table's structure or information, you can use the `DESCRIBE` or `SHOW CREATE TABLE` statements. Here's how:
+
+1. Make sure you're already inside the MySQL CLI and connected to the desired database.
+
+2. To view the structure of a specific table, use the `DESCRIBE` statement followed by the table name:
+
+   ```
+   DESCRIBE your_table_name;
+   ```
+
+   Replace `your_table_name` with the name of the table you want to check.
+
+   This command will display the column names, data types, and other details of the specified table.
+
+3. To view the complete create statement for a specific table, you can use the `SHOW CREATE TABLE` statement:
+
+   ```
+   SHOW CREATE TABLE your_table_name;
+   ```
+
+   Replace `your_table_name` with the name of the table you want to check.
+
+   This command will show the complete SQL statement used to create the specified table, including all the columns, indexes, and constraints.
+
+By using these commands, you can check all tables in a MySQL database or inspect specific tables in detail using the MySQL CLI on macOS.
 
 ### Step 2: Install Node.js
 
