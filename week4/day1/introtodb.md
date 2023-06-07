@@ -387,6 +387,36 @@ LIMIT 5;
 
 Note: SQL syntax may vary slightly depending on the RDBMS (Relational Database Management System) you are using, such as MySQL, Oracle, PostgreSQL, or SQL Server.
 
+Creating models using database dependencies in an MVC (Model-View-Controller) architecture is fundamental. Below are steps for MySQL, PostgreSQL, and MongoDB.
+
+## MySQL with Sequelize
+
+Sequelize is a promise-based ORM for Node.js and works well with MySQL. Here's how you can define a model:
+
+First, install Sequelize and its MySQL driver:
+
+```bash
+npm install sequelize mysql2
+```
+
+Then, create a Sequelize instance and define a model:
+
+```javascript
+const { Sequelize, DataTypes } = require('sequelize');
+
+const sequelize = new Sequelize('database', 'username', 'password', {
+  host: 'localhost',
+  dialect: 'mysql'
+});
+
+const User = sequelize.define('User', {
+  name: DataTypes.STRING,
+  email: DataTypes.STRING
+});
+
+module.exports = User;
+```
+
 ## Introduction to PostgreSQL
 
 PostgreSQL, also known as Postgres, is a powerful, open-source object-relational database system. It is known for its robustness, strong standards compliance, and extensibility. PostgreSQL supports advanced data types and performance optimizations, making it suitable for many types of applications, from personal projects to enterprise systems.
@@ -396,62 +426,6 @@ PostgreSQL, also known as Postgres, is a powerful, open-source object-relational
 ### Step 1: Install PostgreSQL
 
 The first step is to install PostgreSQL on your machine. You can download it from the official PostgreSQL website, and you'll find detailed installation instructions for various operating systems there.
-
-To check all tables in a MySQL database using the MySQL Command-Line Interface (CLI), follow these steps:
-
-1. Open the Terminal application on your macOS.
-
-2. Start the MySQL CLI by typing the following command and pressing Enter:
-
-   ```
-   mysql -u your_username -p
-   ```
-
-   Replace `your_username` with your MySQL username. Enter your MySQL password when prompted.
-
-3. After entering the password, you should be inside the MySQL CLI.
-
-4. Switch to the desired database using the `USE` statement:
-
-   ```
-   USE your_database_name;
-   ```
-
-   Replace `your_database_name` with the name of the database you want to check the tables for.
-
-5. To view all tables in the current database, you can use the following command:
-
-   ```
-   SHOW TABLES;
-   ```
-
-   This command will list all the tables present in the selected database.
-
-If you want to check a specific table's structure or information, you can use the `DESCRIBE` or `SHOW CREATE TABLE` statements. Here's how:
-
-1. Make sure you're already inside the MySQL CLI and connected to the desired database.
-
-2. To view the structure of a specific table, use the `DESCRIBE` statement followed by the table name:
-
-   ```
-   DESCRIBE your_table_name;
-   ```
-
-   Replace `your_table_name` with the name of the table you want to check.
-
-   This command will display the column names, data types, and other details of the specified table.
-
-3. To view the complete create statement for a specific table, you can use the `SHOW CREATE TABLE` statement:
-
-   ```
-   SHOW CREATE TABLE your_table_name;
-   ```
-
-   Replace `your_table_name` with the name of the table you want to check.
-
-   This command will show the complete SQL statement used to create the specified table, including all the columns, indexes, and constraints.
-
-By using these commands, you can check all tables in a MySQL database or inspect specific tables in detail using the MySQL CLI on macOS.
 
 ### Step 2: Install Node.js
 
@@ -688,6 +662,34 @@ SELECT EXTRACT(YEAR FROM TIMESTAMP '2001-02-16 20:38:40');
 ```
 
 Remember, practicing these queries with actual data is crucial for mastering PostgreSQL.
+
+## PostgreSQL with Sequelize
+
+Sequelize also supports PostgreSQL. The steps are similar to MySQL:
+
+First, install Sequelize and its PostgreSQL driver:
+
+```bash
+npm install sequelize pg pg-hstore
+```
+
+Then, create a Sequelize instance and define a model:
+
+```javascript
+const { Sequelize, DataTypes } = require('sequelize');
+
+const sequelize = new Sequelize('database', 'username', 'password', {
+  host: 'localhost',
+  dialect: 'postgres'
+});
+
+const User = sequelize.define('User', {
+  name: DataTypes.STRING,
+  email: DataTypes.STRING
+});
+
+module.exports = User;
+```
 
 ## Introduction to MongoDB
 
