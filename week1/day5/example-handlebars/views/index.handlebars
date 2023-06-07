@@ -1,0 +1,12 @@
+<ul>
+    {{#each todos}}
+        <li>
+            {{#if this.completed}}
+                <strike>{{this.title}} {{this.completed}}</strike>
+            {{else}}
+                <span>{{this.title}} {{this.completed}}</span>
+            {{/if}}
+            {{!-- <span>{{this.title}} - {{this.completed}}</span> --}}
+        </li>
+    {{/each}}
+</ul>
