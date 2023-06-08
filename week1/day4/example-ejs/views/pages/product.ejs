@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("../partials/head", { title: "Products" }); %>
+</head>
+<body>
+    <header>
+        <%- include("../partials/header"); %>
+    </header>
+
+    <main>
+        <% if(isLogin) { %>
+            <% products.forEach(function(item) { %>
+                    <div>
+                        <h3>Name: <%= item.name %></h3>
+                        <h4>Price: <%= item.price %></h4>
+                    </div>
+            <% }); %>
+        <% } else { %>
+            <h1>Hello</h1>
+        <% } %>
+    </main>
+
+    <footer>
+        <%- include("../partials/footer"); %>
+    </footer>
+</body>
+</html>
