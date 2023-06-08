@@ -63,8 +63,49 @@ const getUserById = (req, res) => {
 
 // TODO: write update and delete controllers
 
+const updateUser = (req, res) => {
+    const { id } = req.params;
+    const { data } = req.body;
+
+    try {
+        pool.query("UPDATE users SET ? WHERE id = ?", [data, id], (err, result) => {
+            if(err) {
+                throw err;
+            }
+            res.json({
+                user: result.rows
+            })
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "server error"
+        })
+    }
+}
+
+const deleteUser = (req, res) => {
+    const { id } = req.params;
+
+    try {
+        pool.query("DELETE FROM users WHERE id = ?", [id], (err, result) => {
+            if(err) {
+                throw err;
+            }
+            res.json({
+                user: result.rows
+            })
+        })
+    } catch (error) {
+        res.status(500).json({
+            message: "server error"
+        })
+    }
+}
+
 export {
     createUser,
     getUsers,
-    getUserById
+    getUserById,
+    updateUser,
+    deleteUser
 }
