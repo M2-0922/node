@@ -67,6 +67,13 @@ const updatePost = async (req, res, next) => {
         res.status(200).json({
             post
         })
+        
+        if (!post) {
+            return res.status(404).json({
+              message: `Post with ID ${id} not found`
+            });
+          }
+      
 
     } catch (error) {
         res.status(500).json({
