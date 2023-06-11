@@ -65,7 +65,7 @@ const getUserById = (req, res) => {
 
 const updateUser = (req, res) => {
     const { id } = req.params;
-    const { data } = req.body;
+    const { data } = req.body.rows;
 
     try {
         pool.query("UPDATE users SET ? WHERE id = ?", [data, id], (err, result) => {

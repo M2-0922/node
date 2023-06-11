@@ -9,6 +9,6 @@ router.get("/:id", getUserById);
 
 
 // TODO: write update and delete routes
-router.post("/:id", deleteUser);
-router.get("/:id", deleteUser);
+router.post("/:id", updateUser);
+router.delete("/:id", deleteUser);
 export default router;
