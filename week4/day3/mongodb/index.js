@@ -9,7 +9,8 @@ import "./config/db.js"
 // import routes
 import authRoute from "./route/auth.js";
 import userRoute from "./route/user.js";
-import postRoute from "./route/post.js"
+import postRoute from "./route/post.js";
+import commentRoute from './route/comment.js'
 
 dotenv.config();
 
@@ -24,6 +25,7 @@ app.use(bodyParser.json({ limit: "3mb", extended: true }));
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/post", postRoute);
+app.use('/api/comment', commentRoute);
 
 // listen to port
 app.listen(process.env.PORT, () => {
