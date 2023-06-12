@@ -8,6 +8,7 @@ import authentication from '../middleware/authentication.js';
 const router = Router();
 
 // routes
+
 router.post("/register", register);
 router.post("/login", login);
 router.post("/logout", logout);
