@@ -1,4 +1,6 @@
 import Post from "../model/post.js"
+import Comment from "../model/comment.js";
+// import Like from "../model/like.js";
 
 const getAllPosts = async (req, res, next) => {
     
@@ -89,6 +91,44 @@ const deletePost = async (req, res, next) => {
         })
     }
 }
+
+const createComment = async (req, res, next) => {
+    const { id } = req.params;
+    const { text, author } = req.body;
+
+    try {
+        const post = await Post.findById(id);
+
+        if(!post){
+            return res.status(404).json({
+                message: `ID: ${id} of post couldn't found.`
+            });
+        }
+
+        const comment = new Comment({
+            text,
+            author,
+            post: id
+        });
+
+        await comment.save();
+
+        post.comments.push(comment);
+        await post.save();
+
+        res.status(200).json({
+            comment
+        });
+
+    } catch (error) {
+        res.status(500).json({
+            message: `Server error`
+        })
+    }
+
+}
+
+// Like //
 
 export {
     getAllPosts,
