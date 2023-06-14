@@ -2,6 +2,9 @@ import Post from "../model/post.js";
 import Comment from "../model/comment.js";
 import User from "../model/user.js";
 
+/*******************
+ about Post
+********************/
 const getAllPosts = async (req, res, next) => {
   try {
     let posts = await Post.find({});
@@ -129,6 +132,9 @@ const deletePost = async (req, res) => {
   }
 };
 
+/*******************
+ about Comment
+********************/
 const createComment = async (req, res) => {
   const { id } = req.params;
   const { comment } = req.body;
@@ -213,6 +219,9 @@ const deleteComment = async (req, res) => {
   }
 };
 
+/*******************
+ about post action
+********************/
 const likePost = async (req, res) => {
   const { id } = req.params;
 
